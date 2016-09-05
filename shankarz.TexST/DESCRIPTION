@@ -1,0 +1,23 @@
+Package: shankarz.TexST
+Type: Package
+Title: shankarz.TexST Package
+Version: 1.0
+Date: 2015-03-11
+Author: Natarajan Shankar
+Maintainer: Natarajan Shankar <shankarz@stanford.edu>
+Description: shankarz.TexST : A tweet recommendation engine
+Depends: R (>= 2.10)
+License: GPL (>= 2)
+LazyData: true
+Imports: 
+        RCurl,
+        ROAuth,
+        plyr,
+        slam,
+        tm,
+        twitteR,
+        stringr
+Suggests: 
+        testthat,
+        knitr
+VignetteBuilder: knitr

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Natarajan Shankar" />
+
+<meta name="date" content="2015-03-18" />
+
+<title>shankarz.TexST package</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link href="data:text/css,body%20%7B%0A%20%20background%2Dcolor%3A%20%23fff%3B%0A%20%20margin%3A%201em%20auto%3B%0A%20%20max%2Dwidth%3A%20700px%3B%0A%20%20overflow%3A%20visible%3B%0A%20%20padding%2Dleft%3A%202em%3B%0A%20%20padding%2Dright%3A%202em%3B%0A%20%20font%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0A%20%20font%2Dsize%3A%2014px%3B%0A%20%20line%2Dheight%3A%201%2E35%3B%0A%7D%0A%0A%23header%20%7B%0A%20%20text%2Dalign%3A%20center%3B%0A%7D%0A%0A%23TOC%20%7B%0A%20%20clear%3A%20both%3B%0A%20%20margin%3A%200%200%2010px%2010px%3B%0A%20%20padding%3A%204px%3B%0A%20%20width%3A%20400px%3B%0A%20%20border%3A%201px%20solid%20%23CCCCCC%3B%0A%20%20border%2Dradius%3A%205px%3B%0A%0A%20%20background%2Dcolor%3A%20%23f6f6f6%3B%0A%20%20font%2Dsize%3A%2013px%3B%0A%20%20line%2Dheight%3A%201%2E3%3B%0A%7D%0A%20%20%23TOC%20%2Etoctitle%20%7B%0A%20%20%20%20font%2Dweight%3A%20bold%3B%0A%20%20%20%20font%2Dsize%3A%2015px%3B%0A%20%20%20%20margin%2Dleft%3A%205px%3B%0A%20%20%7D%0A%0A%20%20%23TOC%20ul%20%7B%0A%20%20%20%20padding%2Dleft%3A%2040px%3B%0A%20%20%20%20margin%2Dleft%3A%20%2D1%2E5em%3B%0A%20%20%20%20margin%2Dtop%3A%205px%3B%0A%20%20%20%20margin%2Dbottom%3A%205px%3B%0A%20%20%7D%0A%20%20%23TOC%20ul%20ul%20%7B%0A%20%20%20%20margin%2Dleft%3A%20%2D2em%3B%0A%20%20%7D%0A%20%20%23TOC%20li%20%7B%0A%20%20%20%20line%2Dheight%3A%2016px%3B%0A%20%20%7D%0A%0Atable%20%7B%0A%20%20margin%3A%201em%20auto%3B%0A%20%20border%2Dwidth%3A%201px%3B%0A%20%20border%2Dcolor%3A%20%23DDDDDD%3B%0A%20%20border%2Dstyle%3A%20outset%3B%0A%20%20border%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0A%20%20border%2Dwidth%3A%202px%3B%0A%20%20padding%3A%205px%3B%0A%20%20border%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0A%20%20border%2Dwidth%3A%201px%3B%0A%20%20border%2Dstyle%3A%20inset%3B%0A%20%20line%2Dheight%3A%2018px%3B%0A%20%20padding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0A%20%20border%2Dleft%2Dstyle%3A%20none%3B%0A%20%20border%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0A%0Ap%20%7B%0A%20%20margin%3A%200%2E5em%200%3B%0A%7D%0A%0Ablockquote%20%7B%0A%20%20background%2Dcolor%3A%20%23f6f6f6%3B%0A%20%20padding%3A%200%2E25em%200%2E75em%3B%0A%7D%0A%0Ahr%20%7B%0A%20%20border%2Dstyle%3A%20solid%3B%0A%20%20border%3A%20none%3B%0A%20%20border%2Dtop%3A%201px%20solid%20%23777%3B%0A%20%20margin%3A%2028px%200%3B%0A%7D%0A%0Adl%20%7B%0A%20%20margin%2Dleft%3A%200%3B%0A%7D%0A%20%20dl%20dd%20%7B%0A%20%20%20%20margin%2Dbottom%3A%2013px%3B%0A%20%20%20%20margin%2Dleft%3A%2013px%3B%0A%20%20%7D%0A%20%20dl%20dt%20%7B%0A%20%20%20%20font%2Dweight%3A%20bold%3B%0A%20%20%7D%0A%0Aul%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%7D%0A%20%20ul%20li%20%7B%0A%20%20%20%20list%2Dstyle%3A%20circle%20outside%3B%0A%20%20%7D%0A%20%20ul%20ul%20%7B%0A%20%20%20%20margin%2Dbottom%3A%200%3B%0A%20%20%7D%0A%0Apre%2C%20code%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20color%3A%20%23333%3B%0A%7D%0Apre%20%7B%0A%20%20white%2Dspace%3A%20pre%2Dwrap%3B%20%20%20%20%2F%2A%20Wrap%20long%20lines%20%2A%2F%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20margin%3A%205px%200px%2010px%200px%3B%0A%20%20padding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0A%0Acode%20%7B%0A%20%20font%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0A%20%20font%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0A%20%20padding%3A%202px%200px%3B%0A%7D%0A%0Adiv%2Efigure%20%7B%0A%20%20text%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0A%20%20background%2Dcolor%3A%20%23FFFFFF%3B%0A%20%20padding%3A%202px%3B%0A%20%20border%3A%201px%20solid%20%23DDDDDD%3B%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20border%3A%201px%20solid%20%23CCCCCC%3B%0A%20%20margin%3A%200%205px%3B%0A%7D%0A%0Ah1%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%20%20font%2Dsize%3A%2035px%3B%0A%20%20line%2Dheight%3A%2040px%3B%0A%7D%0A%0Ah2%20%7B%0A%20%20border%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0A%20%20padding%2Dtop%3A%2010px%3B%0A%20%20padding%2Dbottom%3A%202px%3B%0A%20%20font%2Dsize%3A%20145%25%3B%0A%7D%0A%0Ah3%20%7B%0A%20%20border%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0A%20%20padding%2Dtop%3A%2010px%3B%0A%20%20font%2Dsize%3A%20120%25%3B%0A%7D%0A%0Ah4%20%7B%0A%20%20border%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0A%20%20margin%2Dleft%3A%208px%3B%0A%20%20font%2Dsize%3A%20105%25%3B%0A%7D%0A%0Ah5%2C%20h6%20%7B%0A%20%20border%2Dbottom%3A%201px%20solid%20%23ccc%3B%0A%20%20font%2Dsize%3A%20105%25%3B%0A%7D%0A%0Aa%20%7B%0A%20%20color%3A%20%230033dd%3B%0A%20%20text%2Ddecoration%3A%20none%3B%0A%7D%0A%20%20a%3Ahover%20%7B%0A%20%20%20%20color%3A%20%236666ff%3B%20%7D%0A%20%20a%3Avisited%20%7B%0A%20%20%20%20color%3A%20%23800080%3B%20%7D%0A%20%20a%3Avisited%3Ahover%20%7B%0A%20%20%20%20color%3A%20%23BB00BB%3B%20%7D%0A%20%20a%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0A%20%20%20%20text%2Ddecoration%3A%20underline%3B%20%7D%0A%20%20a%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0A%20%20%20%20text%2Ddecoration%3A%20underline%3B%20%7D%0A%0A%2F%2A%20Class%20described%20in%20https%3A%2F%2Fbenjeffrey%2Ecom%2Fposts%2Fpandoc%2Dsyntax%2Dhighlighting%2Dcss%0A%20%20%20Colours%20from%20https%3A%2F%2Fgist%2Egithub%2Ecom%2Frobsimmons%2F1172277%20%2A%2F%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20Keyword%20%2A%2F%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%2F%2A%20DataType%20%2A%2F%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%2F%2A%20DecVal%20%28decimal%20values%29%20%2A%2F%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20BaseN%20%2A%2F%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20Float%20%2A%2F%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20Char%20%2A%2F%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20String%20%2A%2F%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%2F%2A%20Comment%20%2A%2F%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%2F%2A%20OtherToken%20%2A%2F%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20AlertToken%20%2A%2F%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20Function%20calls%20%2A%2F%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%2F%2A%20ErrorTok%20%2A%2F%0A%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+<div id="header">
+<h1 class="title">shankarz.TexST package</h1>
+<h4 class="author"><em>Natarajan Shankar</em></h4>
+<h4 class="date"><em>2015-03-18</em></h4>
+</div>
+
+
+<div id="package-description" class="section level2">
+<h2>Package Description</h2>
+<ul>
+<li>Package: shankarz.TexST</li>
+<li>Type: Package</li>
+<li>Title: A Twitter Recommendation Engine</li>
+<li>Version: 1.0</li>
+<li>Date: 2015-03-18</li>
+<li>Author: Natarajan Shankar</li>
+<li>Maintainer: Natarajan Shankar <a href="mailto:shankarz@stanford.edu">shankarz@stanford.edu</a></li>
+<li>Description: shankarz.TexST : A tweet recommendation engine</li>
+<li>Depends: R (&gt;= 2.10)</li>
+<li>License: GPL (&gt;= 2)</li>
+<li>LazyData: true</li>
+<li>Imports: RCurl, ROAuth, plyr, slam, tm, twitteR, stringr</li>
+<li>Suggests: testthat, knitr</li>
+<li>VignetteBuilder: knitr</li>
+</ul>
+</div>
+<div id="shankarz.texst---abstract" class="section level2">
+<h2>shankarz.TexST - Abstract</h2>
+<p>The <strong>shankarz.TexST</strong> package implements an information retrieval and processing system based upon Twitter tweets. In social engineering, data exchanged between people carries information that can then be broken down and sorted. Twitter is one such source of inter-people information. Sorted data from Twitter can then be used to help make smart, correlative future decisions. The use of past Twitter data to make future projections represents the crux of this project.</p>
+<p>Given a collective set of tweets that correspond to a specific search string in a specific geography in a specific time frame:</p>
+<p><strong>shankarz.TexST</strong> uses the TF-IDF algorithm to prioritize the ASCII tags contained in the collective set and forms a prioritized dataset. 2). The prioritization of the ASCII tags relies upon the well known TF-IDF algorithm (<strong>Reference: <a href="http://en.wikipedia.org/wiki/Tf–idf" class="uri">http://en.wikipedia.org/wiki/Tf–idf</a></strong>) 3). Given a new search string and the pre-existing prioritized ASCII tags, shankarz.TexST searches the prioritized dataset for relevant tweets.</p>
+<p>The utility of this package is that a user with a general idea of what they are looking for in Twitter can use a very general search string, feed it as a filter into a large prioritized dataset, and then be able to retrieve a list of the top N relevant tweets. This project, conducted for as part of the requirements for the Stats290 curriculum, is a rudimentary foray into the area of filtered search. <em>While the prioritized datasets may not exist today, it is expected that data summarization and filtered search will become an important aspect in future years</em>.</p>
+</div>
+<div id="visible-functions-available-in-shankarz.texst-package" class="section level2">
+<h2>Visible functions available in shankarz.TexST package</h2>
+<ol style="list-style-type: decimal">
+<li><p>** twitterAuthenticate() Set up and complete Twitter authentication **</p>
+<p>** Description** twitterAuthenticate() Authenticates user session with Twitter</p>
+<p><strong>Usage</strong> twitterAuthenticate() <strong>Details</strong> Prerequisite task (to be completed at dev.twitter.com) The dev.twitter.com application control panel provides the ability to generate an OAuth access token for the owner of this application. Visit the -My applications- page by navigating to appsdottwitterdotcom, or hover over the profile image in the top right hand corner of the twitter site and select -My applications-.</p>
+<pre><code>        The Applications page contains a list of the applications, along with a button to create a new 
+        application. Select the application you wish to generate a token for, and click on its title. Then 
+        Click on the -Create my access token- button, and an authorized access token and secret will be 
+        generated for this account and the current application. 
+
+        Once the access tokens have been generated, they are to be into this function. Knowing the tokens, 
+        the shankarz.TexST application will subsequently make requests on behalf of this R session.
+
+        Once the prequisite task is complete, twitterAuthenticate will succeed in accessing the Twitter server 
+        with the pre-generated access token and secret: </code></pre>
+<p><strong>Author</strong> Natarajan Shankar</p>
+<p>** References** <a href="http://dev.twitter.com" class="uri">http://dev.twitter.com</a></p>
+<p>** Example function call** <code>twitterAuthenticate()</code></p></li>
+<li><p>** twitterBuildDatabase() Get tweets from Twitter, given user credentials and tokens**</p>
+<p><strong>Description</strong></p>
+<p>twitterBuildDatabase()</p>
+<p>Gets tweets from within an area within miles of a location specified by lattitude and longitude</p>
+<p><strong>Usage</strong></p>
+<p>twitterBuildDatabase(search.string = “”, lat = “”, long = “”, miles = “”, since = “”, numberOfTweets = 1)</p>
+<p><strong>Arguments</strong></p>
+<ol style="list-style-type: decimal">
+<li>search.string An optional search string to query Twitter.</li>
+<li>lat A string of latitude numerics.</li>
+<li>long A string of longitude numeric.</li>
+<li>miles The number of miles for radius of search (as string).</li>
+<li>since The start date for the Twitter search (“yyyy-mm-dd”).</li>
+<li>numberOfTweets Number of tweets requested from Twitter.</li>
+</ol></li>
+</ol>
+<p><strong>Details</strong></p>
+<pre><code>  This function conducts a search that pulls tweets that originated within specified miles of a location (lat, long) that have been 
+  tweeted after the date specified by the since parameter. Optionally, this function also accepts a search string for the query.</code></pre>
+<p><strong>Value</strong></p>
+<pre><code>  A data.frame of twitter tweets.</code></pre>
+<p><strong>Example function call</strong> ``` message(“To run twitterBuildDatabase, it is mandatory to have have run TwitterAuthenticate()”) twitterAuthenticate()</p>
+<pre><code>twitterBuildDatabase(search.string = &quot;Giants&quot;, lat=&quot;37.794108&quot;, long=&quot;-122.39511&quot;,
+       miles=&quot;15&quot;, since=&quot;2014-10-01&quot;, numberOfTweets = 100)</code></pre>
+<p>```</p>
+<ol style="list-style-type: decimal">
+<li><h1 id="generatetweetrecommendations-given-a-new-tweet-return-n-recommended-tweets.">generateTweetRecommendations() Given a new tweet, return n recommended tweets.**</h1>
+<p><strong>Description</strong></p>
+generateTweetRecommendations()
+<ul>
+<li>Recommends tweets in the corpus given a seed tweet.</li>
+</ul>
+<p><strong>Usage</strong></p>
+<p>generateTweetRecommendations(tweetDF, tweet = NULL, num_recs = 10)</p>
+<p><strong>Arguments</strong></p>
+<ol style="list-style-type: decimal">
+<li>tweetDF<br /></li>
+</ol>
+<ul>
+<li>A data.frame returned from the prior step that called twitterBuildDatabase().</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>tweet<br /></li>
+</ol>
+<ul>
+<li>The seed string for which recommendations will be returned for.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>num_recs<br /></li>
+</ol>
+<ul>
+<li>The number of recommendations requested.</li>
+</ul>
+<p><strong>Details</strong></p>
+<p>This function constructs a DocumentTermMatrics (reference: package tm) that is weighted by TF-IDF in order to show similar words to any given tweet. Given a seed tweet, this function adds the tweet to the corpus, calculates TF-IDF on the entire set, and recommends n similar tweets based on text similarity.</p>
+<p><strong>Value</strong></p>
+<p>tweets recommended for the seed tweet.</p>
+<p><strong>Example function call</strong></p>
+<p>generateTweetRecommendations(sfTweets, tweet=“sourdough”, num_recs=10)</p>
+<p><strong>Author</strong> Natarajan Shankar</p>
+<p>** References** <a href="http://dev.twitter.com" class="uri">http://dev.twitter.com</a></p></li>
+</ol>
+</div>
+<div id="running-the-entire-code-sequence-in-3-easy-function-calls" class="section level2">
+<h2>Running the entire code sequence in 3 easy function calls</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load the needed library</span>
+<span class="kw">library</span>(shankarz.TexST)</code></pre>
+<pre><code>twitterAuthenticate()</code></pre>
+<pre><code>df &lt;- twitterBuildDatabase(&quot;sf&quot;, lat=&quot;37.7941&quot;,
+                       long=&quot;-122.395&quot;,
+                       miles=&quot;15&quot;,
+                       since=&quot;2015-01-01&quot;,
+                       numberOfTweets=500)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">seedTweet &lt;-<span class="st"> &quot;food at the wharf&quot;</span>
+<span class="kw">generateTweetRecommendations</span>(sfTweets, seedTweet)</code></pre>
+<pre><code>##  [1] &quot;Sometimes Fishermans Wharf reminds me of Crete. #fishingboats #greece #crete #sanfrancisco #sf #memories http://t.co/UNX1E0dNgV&quot; 
+##  [2] &quot;Today #sfmarinfoodbank @ SF-Marin Food Bank https://t.co/ln3BIPDkS5&quot;                                                             
+##  [3] &quot;Today @skoutapp and @sfmfoodbank #volunteer @ SF-Marin Food Bank https://t.co/L7xySQHTUl&quot;                                        
+##  [4] &quot;#volunteer #volunteering #sffoodbank #sanfranciscofoodbank #oranges @ SF-Marin Food Bank https://t.co/nIjTPo7yIF&quot;                
+##  [5] &quot;Look at our HUGE @RocketLawyer group skipping orientation bc we're repeat volunteers at the SF food bank! http://t.co/22X6gMSsyS&quot;
+##  [6] &quot;@rocketlawyer playing it cool before volunteering at @sfmfoodbank #toocoolforschool @ SF-Marin Food Bank https://t.co/7cg3lmZFBi&quot;
+##  [7] &quot;Newest food trend in SF: teriyaki @XFINITY (spotted also by @serifluous &amp;amp; @jordanstaniscia) http://t.co/djqtOGTt9j&quot;          
+##  [8] &quot;First time in SF (@ San Francisco International Airport (SFO) - @flysfo in San Francisco, CA) https://t.co/5wLeWjFUuK&quot;           
+##  [9] &quot;Wouldnt be a bad view from the desk.. #SF #sanfran @ Google San Francisco https://t.co/IbxU0b7pyQ&quot;                               
+## [10] &quot;These city folk sho love their rooftop experiences http://t.co/I9ZEq7FJUi #sf #bayarea http://t.co/Bh5oeEk0s5&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">seedTweet &lt;-<span class="st"> &quot;downtown homeless&quot;</span>
+<span class="kw">generateTweetRecommendations</span>(sfTweets, seedTweet)</code></pre>
+<pre><code>##  [1] &quot;Why do I not have LTE in downtown SF @VerizonSupport&quot;                                                                                             
+##  [2] &quot;walked around downtown sf and it was really cool&quot;                                                                                                 
+##  [3] &quot;I wish I ate more before coming here. We are being educated about what to do when we become homeless. #SFTownHall #SF #GopmanVarietyShow&quot;         
+##  [4] &quot;Downtown's 800 J Lofts sell to real estate investment firm http://t.co/tWY0c5q50l&quot;                                                                
+##  [5] &quot;Just passed a homeless man digging through garbage streaming SFPD on his phone. Only in SF.&quot;                                                      
+##  [6] &quot;@Hoos1492 I am an enthusiastic promoter of \&quot;reactivation villages\&quot; for homeless neighbors in SF, &amp;amp; I'm running for Mayor of SF. #SFTownHall&quot;
+##  [7] &quot;A site created (GoFundMe-like fundraising pages) for homeless people. #PrivatizePoverty #SFTownHall #SF http://t.co/TpJ9wI9P8w&quot;                   
+##  [8] &quot;Rally for #Tibet downtown SF yesterday. @ Union Square, San Francisco https://t.co/6UBb4ybV7c&quot;                                                    
+##  [9] &quot;#karl has come to downtown #fog #cold #sf @ San Francisco, California https://t.co/AXtYUJPZD1&quot;                                                    
+## [10] &quot;Work lobby. #SF #WorkingInSF #MySecondDay #Thursday #Work #Downtown @ San Francisco, California https://t.co/n51UQVt8S3&quot;</code></pre>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

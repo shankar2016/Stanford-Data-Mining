@@ -1,0 +1,38 @@
+##
+## Begin shankarz code
+##
+
+##
+## > names(sfTweets)
+## "text"          "favorited"     "favoriteCount" "replyToSN"     "created"       "truncated"     
+## "replyToSID"    "id"            "replyToUID"    "statusSource"  "screenName"   
+## "retweetCount"  "isRetweet"     "retweeted"     "longitude"     "latitude"     
+#' A data set of San Francisco derived tweets.
+#'
+#' A dataset containing tweets sourced in San Francisco
+#'
+#' @format A data frame with 717 rows and 16 columns:
+#' \describe{
+#'  \item{text}{text part of tweet}
+#'   \item{favorited}{was the tweet favorited}
+#'   \item{favoriteCount}{number of times that the twwet was favorited}
+#'   \item{replyToSN}{was it a reply}
+#'   \item{created}{when was the tweet registered}
+#'   \item{truncated}{Was the tweet truncated}
+#'   \item{replyToSID}{The address of the Replied-to}
+#'   \item{id}{Id of the Tweet}
+#'   \item{replyToUID}{User ID to the person being replied to}
+#'   \item{statusSource}{the source application that originated the tweet}
+#'   \item{screenName}{user name of the tweeter in the application}
+#'   \item{retweetCount}{count of retweets}
+#'   \item{isRetweet}{is this tweet a re-tweet}
+#'   \item{retweeted}{has this tweet been re-tweeted}
+#'   \item{longitude}{geo-location of tweet}
+#'   \item{latitude}{geo-location of tweet}
+#' }
+#' @source \url{http://dev.twitter.com/}
+"sfTweets"
+
+##
+## End shankarz code
+##
